@@ -1,0 +1,20 @@
+{
+  "name": "advent-of-code-2020",
+  "version": "1.0.0",
+  "description": "Advent of Code 2020",
+  "main": "index.js",
+  "author": "Brian Sinkovec",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha day*/test.js",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinkovec/Advent-of-Code-2020.git"
+  },
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "mocha": "^8.2.1"
+  }
+}
