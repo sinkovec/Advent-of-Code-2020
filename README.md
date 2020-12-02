@@ -1,4 +1,5 @@
 # Advent-of-Code-2020
+![Build status](https://img.shields.io/github/workflow/status/sinkovec/Advent-of-Code-2020/build?style=plastic)
 
 These are my solutions for the [Advent of Code 2020](https://adventofcode.com/2020).
 The solutions are written in JavaScript.
