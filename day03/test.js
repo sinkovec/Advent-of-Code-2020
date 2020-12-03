@@ -21,6 +21,6 @@ describe('Day 3: Toboggan Trajectory', () => {
     });
 
     it('Part Two', () => {
-        assert.strictEqual(1, 1);
+        assert.strictEqual(two(input), 336);
     });
 });
