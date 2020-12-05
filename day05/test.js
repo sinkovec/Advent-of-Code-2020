@@ -1,7 +1,6 @@
 const { describe,it } = require('mocha');
 const assert = require('assert');
 const one = require('./one');
-const two = require('./two');
 
 describe('Day 5: Binary Boarding', () => {
     it('Part One: test FBFBBFFRLR', () => {
