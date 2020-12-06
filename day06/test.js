@@ -26,6 +26,6 @@ describe('Day 6: Custom Customs', () => {
     });
 
     it('Part Two', () => {
-        assert.strictEqual(two(input), 0);
+        assert.strictEqual(two(input), 6);
     });
 });
