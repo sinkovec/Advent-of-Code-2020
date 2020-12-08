@@ -9,10 +9,7 @@ module.exports = (input) => {
         var executedInstructions = new Set();
         var acc = 0;
         var programCounter = 0;
-        while (true) {
-            if (programCounter >= modInstructions.length) {
-                return acc;
-            }
+        while (programCounter < modInstructions.length) {
             if (executedInstructions.has(programCounter)) {
                 break;
             }
@@ -32,6 +29,9 @@ module.exports = (input) => {
             default:
                 break;
             }
+        }
+        if (programCounter >= modInstructions.length) {
+            return acc;
         }
     }
 };
