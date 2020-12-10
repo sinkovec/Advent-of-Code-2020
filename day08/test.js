@@ -14,7 +14,7 @@ acc +1
 jmp -4
 acc +6`;
 
-describe('Day 1: Handheld Halting', () => {
+describe('Day 8: Handheld Halting', () => {
 
     it('Part One', () => {
         assert.strictEqual(one(input), 5);
