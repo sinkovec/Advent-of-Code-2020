@@ -54,7 +54,7 @@ function countOccupiedSeatsInSight(matrix, row, col) {
         }
     }
     // count horizontal seats
-    for (i = col+1; i < matrix.length; i++) {
+    for (i = col+1; i < matrix[row].length; i++) {
         if (matrix[row][i] === '#') {
             seatCounter++;
             break;
@@ -71,7 +71,7 @@ function countOccupiedSeatsInSight(matrix, row, col) {
         }
     }
     // count diagonal seats
-    for (i = row+1, j = col+1; i < matrix.length && j < matrix.length; i++, j++) {
+    for (i = row+1, j = col+1; i < matrix.length && j < matrix[i].length; i++, j++) {
         if (matrix[i][j] === '#') {
             seatCounter++;
             break;
@@ -87,7 +87,7 @@ function countOccupiedSeatsInSight(matrix, row, col) {
             break;
         }
     }
-    for (i = row-1, j = col+1; i >= 0 && j < matrix.length; i--, j++) {
+    for (i = row-1, j = col+1; i >= 0 && j < matrix[i].length; i--, j++) {
         if (matrix[i][j] === '#') {
             seatCounter++;
             break;
