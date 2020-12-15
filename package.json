@@ -6,7 +6,7 @@
   "author": "Brian Sinkovec",
   "license": "MIT",
   "scripts": {
-    "test": "mocha day*/test.js",
+    "test": "mocha day*/test.js --timeout 30000",
     "lint": "eslint .",
     "exec": "node index.js day$(date \"+%d\")"
   },
