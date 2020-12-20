@@ -14,30 +14,43 @@ module.exports = (input) => {
 
     return words.split('\n').reduce((sum,w) => {
         var M = pre_star(prod, w);
-        var acc = M.has(`[0,${w.length},0]`) ? 1 : 0;
+        var acc = M.get(0).has(0) ? M.get(0).get(0).has(w.length) ? 1 : 0 : 0;
         return sum + acc;
     }, 0);
 };
 
 function pre_star(prod, w) {
     var n = w.length;
-    var M = new Set(Array.from({length : n}, (v,i) => `[${i},${i+1},${w.charAt(i)}]`));
-    
+    var M = new Map(Array.from({length : n}, (v,i) => [i, new Map([[w.charAt(i), new Set([i+1])]])]));
+
     do {
-        var oldSize = M.size;
+        var oldSize = getSize(M);
         for (const [A,prods] of Object.entries(prod)) {
             for (const beta of prods) {
-                for (var q = 0; q <= n; q++) {                    
+                for (var q = 0; q < n; q++) {                    
                     const P = getPaths(M,q,beta);
                     for (const p of P) {
-                        M.add(`[${q},${p},${A}]`);   
+                        if (!M.get(q).has(+A)) {
+                            M.get(q).set(+A, new Set());
+                        }
+                        M.get(q).get(+A).add(p); 
                     }
                 }
             }
         }
 
-    } while (oldSize !== M.size);
+    } while (oldSize !== getSize(M));
     return M;
+}
+
+function getSize(M) {
+    var sum = 0;
+    for (const a of M.values()) {
+        for (const b of a.values()) {
+            sum += b.size;
+        }
+    }
+    return sum;
 }
 
 function getPaths(M, q, beta) {
@@ -47,11 +60,9 @@ function getPaths(M, q, beta) {
             break;
         }
         const newQ = new Set();
-        for (const state of Q) {
-            const regex = new RegExp(`\\[${state},\\d+,${N}\\]`);
-            const P = Array.from(M).filter(t => regex.test(t)).map(t => t.split(',')[1]).map(Number);
-            if (P.length > 0) {
-                P.forEach(e => newQ.add(e));
+        for (const s of Q) {
+            if (M.has(s) && M.get(s).has(N)) {
+                Array.from(M.get(s).get(N)).forEach(e => newQ.add(e));
             }
         }
         Q = newQ;

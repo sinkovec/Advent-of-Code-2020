@@ -72,7 +72,7 @@ describe('Day 19: Monster Messages', () => {
         assert.strictEqual(one(input), 2);
     });
 
-    it.skip('Part Two', () => {
+    it('Part Two', () => {
         assert.strictEqual(two(input2), 12);
     });
 });
